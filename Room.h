@@ -6,6 +6,7 @@
 #include <iostream>
 #include "Entity.h"
 
+
 class Exit;
 class Creature;
 
@@ -15,8 +16,8 @@ public:
 	Room(const char* name, const char* description);
 	~Room();
 	void look();
-	void getExit();
-
+	Exit* getExit(string arg);
+	list<Exit*> exits;
 };
 
 #endif //_Room_

@@ -3,6 +3,8 @@
 
 //Include
 #include "Creature.h"
+#include "Room.h"
+#include "Exit.h"
 
 using namespace std;
 

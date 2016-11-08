@@ -1,10 +1,10 @@
 #include "Exit.h"
 
 
-Exit::Exit(const char * name, const char * description, Room * currents, Room * destinations) : Entity(name, description, (Entity*)currents)
+Exit::Exit(const char * name, const char * description, Room * currents, Room * destinations, bool isLocked) : Entity(name, description, (Entity*)currents)
 {
 	type = EXIT;
-
+	isLocked = false;
 	current = currents;
 	destination = destinations;
 	destination->entities.push_back(this);

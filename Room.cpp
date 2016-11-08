@@ -30,7 +30,19 @@ void Room::look()
 
 }
 
-void Room::getExit()
+Exit * Room::getExit(string arg)
 {
+	{
+		for (list<Entity*>::const_iterator it = entities.begin(); it != entities.cend(); ++it)
+		{
+			if ((*it)->type == EXIT && (*it)->name == arg)
+			{
+				Exit* exit = (Exit*)*it;
+				return exit;
 
+			}
+		}
+
+	}
 }
+

@@ -12,13 +12,15 @@ class Room;
 class Exit : public Entity
 {
 public:
-	Exit(const char* name, const char* description, Room* currents, Room* destinations);
+	Exit(const char* name, const char* description, Room* currents, Room* destinations, bool isLocked, Item* item);
 	~Exit();
-	void look();
+	void Look();
+	bool Unlock(Item* item);
 
 public:
 	Room* current;
 	Room* destination;
+	bool isLocked;
 
 };
 
