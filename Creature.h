@@ -22,6 +22,7 @@ public:
 public:
 	bool isAlive;
 
+
 };
 
 #endif //__Creature__

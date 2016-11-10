@@ -5,6 +5,8 @@
 #include "Creature.h"
 #include "Room.h"
 #include "Exit.h"
+#include "Item.h"
+#include "Npc.h"
 
 using namespace std;
 
@@ -17,6 +19,7 @@ public:
 	void Go(const vector<string>& args);
 	void Look(const vector<string>& args);
 	bool Drop(const vector<string>& args);
+	bool Use(const vector<string>& args);
 	void Inventory();
 	bool Pick(const vector<string>& args);
 };

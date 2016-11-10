@@ -15,7 +15,8 @@ enum EntityType
 	EXIT,
 	ITEM,
 	CREATURE,
-	PLAYER
+	PLAYER,
+	NPC
 
 };
 
