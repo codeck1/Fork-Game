@@ -12,25 +12,34 @@ Player::~Player()
 void Player::Go(const vector<string>& args)
 {
 	Room* room = (Room*)parent;
-	Exit* currentExit = room->getExit(args[1]);
-	if (currentExit->isLocked)
+	Exit* currentExit = NULL;
+	if (room->getExit(args[1]) != NULL)
 	{
-		cout << "The path is closed. If i have to tell you, you are srewed \n";
+		currentExit = room->getExit(args[1]);
+		if (currentExit->isLocked)
+		{
+			cout << "The path is closed. If i have to tell you, you are srewed \n";
+		}
+		else
+		{
+			cout << "Goint to " << currentExit->destination->name << "\n";
+			ChangeParentTo(currentExit->destination);
+
+		}
 	}
 	else
-	{
-		cout << "Goint to " << currentExit->destination->name <<"\n";
-		ChangeParentTo(currentExit->destination);
-
-	}
+		cout << "yeeeep";
+	
 
 	
 }
 
 void Player::Look(const vector<string>& args)
 {
+
 	if (args.size() > 1)
 	{
+		
 		for (list<Entity*>::const_iterator it = parent->entities.begin(); it != parent->entities.cend(); ++it)
 		{
 			if (args[1].compare((*it)->name) == 0)
@@ -47,6 +56,7 @@ void Player::Look(const vector<string>& args)
 	}
 	else
 	{
+
 		parent->Look();
 	}
 	
@@ -72,9 +82,9 @@ bool Player::Drop(const vector<string>& args)
 
 bool Player::Use(const vector<string>& args)
 {
-	Item* item;
+	Item* item = NULL;
 	
-	if (args.size == 1 || args.size == 2)
+	if (args.size() == 1 || args.size() == 2)
 	{
 		cout << "\nCome on bro. Tell me what to use and where";
 	}
@@ -96,7 +106,7 @@ bool Player::Use(const vector<string>& args)
 				if ((*it)->type == EXIT && item->item_type == KEY )
 				{
 					Exit* exit = (Exit*)(*it);
-					if(exit->Unlock(item));
+					if(exit->Unlock(item))
 					{
 						entities.remove(item);
 						cout << "\nNow the " << exit->name << " is open";
@@ -113,7 +123,10 @@ bool Player::Use(const vector<string>& args)
 							recived->ChangeParentTo(this);
 						}
 					}
-
+			}
+			else
+			{
+				cout << "Wrong combination my friend.";
 			}
 
 		}
@@ -123,9 +136,27 @@ bool Player::Use(const vector<string>& args)
 	return false;
 }
 
+void Player::Talk(const vector<string>& args)
+{
+	
+	if (args.size() > 1)
+	{
+		for (list<Entity*>::const_iterator it = parent->entities.begin(); it != parent->entities.cend(); ++it)
+		{
+			if (args[1].compare((*it)->name) == 0 || args[2].compare((*it)->name) == 0)
+			{
+				Npc* npc = (Npc*)(*it);
+				cout << "\n" << npc->name << " says " << npc->dialogNpc;
+
+			}
+		}
+	}
+	return;
+}
+
 void Player::Inventory()
 {
-	if (entities.size == 0)
+	if (entities.size() == 0)
 	{
 		cout << "\nSorry buddy, but you don't have anything, but, Who really has things in this world, where everything is money and money...";
 		return;
@@ -139,7 +170,17 @@ void Player::Inventory()
 	}
 }
 
-bool Player::Pick(const vector<string>& args)
+void Player::Pick(const vector<string>& args)
 {
-	return false;
+	for (list<Entity*>::const_iterator it = parent->entities.begin(); it != parent->entities.cend(); ++it)
+	{
+		if ((args[1].compare((*it)->name) == 0))
+		{
+			cout << "\nYou take the " << (*it)->name;
+			Item* picked = (Item*)(*it);
+			picked->ChangeParentTo(this);
+		}
+	}
+
+	return;
 }

@@ -11,9 +11,11 @@ public:
 	Npc(const char* name, const char* description, Room* room, Item* itemPosesion, const char* itemWanted, const char* dialog);
 	void Look();
 	Item* change(Item* toChange);
+	
 public:
 	const char* wanted;
 	Item* posesion;
+	const char* dialogNpc;
 };
 
 #endif // _NPC_

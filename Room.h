@@ -15,7 +15,7 @@ class Room : public Entity
 public:
 	Room(const char* name, const char* description);
 	~Room();
-	void look();
+	void Look();
 	Exit* getExit(string arg);
 	list<Exit*> exits;
 };

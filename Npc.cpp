@@ -5,6 +5,7 @@ Npc::Npc(const char * name, const char * description, Room * room, Item * itemPo
 	type = NPC;
 	wanted = itemWanted;
 	posesion = itemPosesion;
+	dialogNpc = dialog;
 }
 
 void Npc::Look()

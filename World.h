@@ -5,6 +5,7 @@
 #include <list>
 #include<vector>
 #include "Room.h"
+#include "Player.h"
 
 using namespace std;
 
@@ -20,6 +21,7 @@ public:
 
 public:
 	Room* roomm;
+	Player* player;
 private:
 
 	list<Entity*> allEntities;

@@ -20,8 +20,9 @@ public:
 	void Look(const vector<string>& args);
 	bool Drop(const vector<string>& args);
 	bool Use(const vector<string>& args);
+	void Talk(const vector<string>& args);
 	void Inventory();
-	bool Pick(const vector<string>& args);
+	void Pick(const vector<string>& args);
 };
 
 #endif //_PLAYER_

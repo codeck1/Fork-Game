@@ -10,7 +10,7 @@ Room::~Room()
 {
 }
 
-void Room::look()
+void Room::Look()
 {
 	cout << name << "\n";
 	cout << description << "\n";
@@ -42,6 +42,7 @@ Exit * Room::getExit(string arg)
 
 			}
 		}
+		return NULL;
 
 	}
 }
