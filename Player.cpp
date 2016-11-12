@@ -13,22 +13,30 @@ void Player::Go(const vector<string>& args)
 {
 	Room* room = (Room*)parent;
 	Exit* currentExit = NULL;
-	if (room->getExit(args[1]) != NULL)
+	if (args.size() > 1)
 	{
-		currentExit = room->getExit(args[1]);
-		if (currentExit->isLocked)
+		if (room->getExit(args[1]) != NULL)
 		{
-			cout << "The path is closed. If i have to tell you, you are srewed \n";
-		}
-		else
-		{
-			cout << "Goint to " << currentExit->destination->name << "\n";
-			ChangeParentTo(currentExit->destination);
+			currentExit = room->getExit(args[1]);
+			if (currentExit->locked)
+			{
+				cout << "The path is closed. If i have to tell you, you are srewed \n";
+			}
+			else
+			{
+				
+				
+				cout << "Going to " << currentExit->destination->name << "\n";
+				ChangeParentTo(currentExit->destination);
+				currentExit->destination->Look();
 
+				currentExit->ChangeDest();
+
+			}
 		}
 	}
 	else
-		cout << "yeeeep";
+		cout << "\nTell where to go\n";
 	
 
 	
@@ -56,8 +64,8 @@ void Player::Look(const vector<string>& args)
 	}
 	else
 	{
-
-		parent->Look();
+		Room* room = (Room*)(parent);
+		room->Look();
 	}
 	
 }

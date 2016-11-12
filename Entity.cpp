@@ -29,7 +29,9 @@ void Entity::ChangeParentTo(Entity * newParent)
 	if (newParent != NULL)
 	{
 		parent->entities.remove(this);
-		newParent->entities.push_back(this);
+		parent = newParent;
+		parent->entities.push_back(this);
+		
 	}
 
 

@@ -18,10 +18,12 @@ public:
 	void Look();
 	bool Unlock(Item* item);
 
+	void ChangeDest();
+
 public:
 	Room* current;
 	Room* destination;
-	bool isLocked;
+	bool  locked;
 	Item* unlocker;
 
 };
