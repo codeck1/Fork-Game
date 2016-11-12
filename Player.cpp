@@ -118,6 +118,7 @@ bool Player::Use(const vector<string>& args)
 					{
 						entities.remove(item);
 						cout << "\nNow the " << exit->name << " is open";
+						return true;
 					}
 				}
 				else
@@ -129,13 +130,12 @@ bool Player::Use(const vector<string>& args)
 						{
 							cout << "\nYou recived " << recived->name << " changed for " << item->name;
 							recived->ChangeParentTo(this);
+							item->ChangeParentTo(npc);
+							return true;
 						}
 					}
 			}
-			else
-			{
-				cout << "Wrong combination my friend.";
-			}
+			
 
 		}
 
@@ -146,7 +146,6 @@ bool Player::Use(const vector<string>& args)
 
 void Player::Talk(const vector<string>& args)
 {
-	
 	if (args.size() > 1)
 	{
 		for (list<Entity*>::const_iterator it = parent->entities.begin(); it != parent->entities.cend(); ++it)
@@ -154,7 +153,8 @@ void Player::Talk(const vector<string>& args)
 			if (args[1].compare((*it)->name) == 0 || args[2].compare((*it)->name) == 0)
 			{
 				Npc* npc = (Npc*)(*it);
-				cout << "\n" << npc->name << " says " << npc->dialogNpc;
+				cout << "\n" << npc->name << " says:\n " << npc->dialogNpc;
+				return;
 
 			}
 		}
@@ -180,15 +180,18 @@ void Player::Inventory()
 
 void Player::Pick(const vector<string>& args)
 {
-	for (list<Entity*>::const_iterator it = parent->entities.begin(); it != parent->entities.cend(); ++it)
+	if (args.size() > 1)
 	{
-		if ((args[1].compare((*it)->name) == 0))
+		for (list<Entity*>::const_iterator it = parent->entities.begin(); it != parent->entities.cend(); ++it)
 		{
-			cout << "\nYou take the " << (*it)->name;
-			Item* picked = (Item*)(*it);
-			picked->ChangeParentTo(this);
+			if ((args[1].compare((*it)->name) == 0))
+			{
+				cout << "\nYou take the " << (*it)->name;
+				Item* picked = (Item*)(*it);
+				picked->ChangeParentTo(this);
+				return;
+			}
 		}
 	}
-
-	return;
+		
 }

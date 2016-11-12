@@ -13,7 +13,7 @@ Room::~Room()
 
 void Room::Look()
 {
-	cout << name << "\n";
+	cout << "\n" << name <<  "\n";
 	cout << description << "\n";
 
 	for (list<Entity*>::const_iterator it = entities.begin(); it != entities.cend(); ++it)
@@ -25,7 +25,7 @@ void Room::Look()
 			Exit* exit = (Exit*)*it;
 			Room* room = exit->destination;
 			Room* room2 = exit->current;
-			cout <<"\n" << exit->name << "\n Direcction to: " << (room)->name << " from " << (room2)->name;
+			cout <<"\n" << exit->name << "\n Direcction to: " << (room)->name << " from " << (room2)->name << "\n";
 		}
 	}
 
