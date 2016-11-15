@@ -21,6 +21,7 @@ void Player::Go(const vector<string>& args)
 			if (currentExit->locked)
 			{
 				cout << "The path is closed. If i have to tell you, you are srewed \n";
+				return;
 			}
 			else
 			{
@@ -29,14 +30,18 @@ void Player::Go(const vector<string>& args)
 				cout << "Going to " << currentExit->destination->name << "\n";
 				ChangeParentTo(currentExit->destination);
 				currentExit->destination->Look();
-
 				currentExit->ChangeDest();
+				
+				return;
 
 			}
 		}
 	}
 	else
+	{
 		cout << "\nTell where to go\n";
+		return;
+	}
 	
 
 	

@@ -8,15 +8,15 @@
 
 World::World()
 {
-	Room* kitchen = new Room("Kitchen", "You are in a dirty kitchen surrounded by junks.\nThere is some sugar splited on the floor.\nThere is a door behind you");
-	Room* livingRoom = new Room("Living Room", "You are in a huge living room\nYour mother is here\nBehing her are the stairs");
-	Room* corridor = new Room("Corridor", "You have your Sister's Room on your left and Your Room on your right");
-	Room* room1 = new Room("Sister's Room", "You take a huge risk going in here but okay..\nYour sister's room is plenty of things. There are documents on the table, posters on the walls and....A big diary on the floor");
-	Room* room2 = new Room("Your room", "Okay man...It's time to admit your problem. It's okay having the Diogenes Syndrome.\nBy the way. Under all your junks there are the keys that you robed from your sister");
-	Room* street1 = new Room("Street", "The street in front of your house. How much time has passed, since you went out the last time?\nThere is a huge machine. Maybe to fix the road");
-	Room* street2 = new Room("Closed road", "Oh man. The street is closed, there is a big hole in the middle...Oh shit don't go...\nOh shit\n...\nElliot?\n....Elliot?\n I can't belive you're such an idiot. Oh my god, now you are dead and i have no one to guide. Thanks Elliot. Very kind.");
-	Room* street3 = new Room("Street of Mrs Lylypad", "The house of Mrs Lylypad is in front of you. And that little granny is at the door.");
-	Room* nhouse = new Room("Mrs Lylypad House", "You go in and...There is...The fork.\n THE MOTHERFUCKING PRECIOUS FORK\nOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOH\nNice Elliot. Your meaningless life is now worth.");
+	Room* kitchen = new Room("Kitchen", "You are in a dirty kitchen surrounded by junks.\nThere is some sugar splited on the floor.\nThere is a door behind you", NORMAL);
+	Room* livingRoom = new Room("Living Room", "You are in a huge living room\nYour mother is here\nBehing her are the stairs", NORMAL);
+	Room* corridor = new Room("Corridor", "You have your Sister's Room on your left and Your Room on your right", NORMAL);
+	Room* room1 = new Room("Sister's Room", "You take a huge risk going in here but okay..\nYour sister's room is plenty of things. There are documents on the table, posters on the walls and....A big diary on the floor", NORMAL);
+	Room* room2 = new Room("Your room", "Okay man...It's time to admit your problem. It's okay having the Diogenes Syndrome.\nBy the way. Under all your junks there is the key that you robed from your sister", NORMAL);
+	Room* street1 = new Room("Street", "The street in front of your house. How much time has passed, since you went out the last time?\nThere is a huge machine. Maybe to fix the road", NORMAL);
+	Room* street2 = new Room("Closed road", "Oh man. The street is closed, there is a big hole in the middle...Oh shit don't go...\nOh shit\n...\nElliot?\n....Elliot?\n I can't belive you're such an idiot. Oh my god, now you are dead and i have no one to guide. Thanks Elliot. Very kind.", END);
+	Room* street3 = new Room("Street of Mrs Lylypad", "The house of Mrs Lylypad is in front of you. And that little granny is at the door.", NORMAL);
+	Room* nhouse = new Room("Mrs Lylypad House", "You go in and...There is...The fork.\n THE MOTHERFUCKING PRECIOUS FORK\nOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOH\nNice Elliot. Your meaningless life is now worth.",END);
 
 	Item* houseKey = new Item("housekey", "Come one bro it's easy. THE KEYS FOR YOUR HOUSE", nhouse, KEY);
 	Item* lKey = new Item("lylypadkey", "The keys from Mrs Lylypad", nhouse, KEY);
@@ -132,4 +132,15 @@ void World::commandEntries(vector<string>& commands)
 
 		}
 	
+}
+
+bool World::isEnd()
+{
+	Room* room = (Room*)player->parent;
+	if (room->typeR == END)
+	{
+		return true;
+	}
+	else
+		return false;
 }

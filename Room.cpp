@@ -1,10 +1,10 @@
 #include "Exit.h"
 #include "Room.h"
 
-Room::Room(const char * name, const char * description) : Entity(name, description, NULL)
+Room::Room(const char * name, const char * description, roomType typeRoom) : Entity(name, description, NULL)
 {
 	type = ROOM;
-	
+	typeR = typeRoom;
 }
 
 Room::~Room()
@@ -18,7 +18,10 @@ void Room::Look()
 
 	for (list<Entity*>::const_iterator it = entities.begin(); it != entities.cend(); ++it)
 	{
-		
+		if (typeR == END )
+		{
+			return;
+		}
 		if ((*it)->type == EXIT)
 		{
 
@@ -47,4 +50,10 @@ Exit * Room::getExit(string arg)
 
 	}
 }
+
+roomType Room::roomEnd()
+{
+	return typeR;
+}
+
 

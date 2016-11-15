@@ -22,6 +22,7 @@ public:
 public:
 	Room* roomm;
 	Player* player;
+	bool isEnd();
 private:
 
 	list<Entity*> allEntities;

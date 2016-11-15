@@ -28,8 +28,13 @@ int main()
 		system("cls");
 		new_world.commandEntries(commands);
 		commands.clear();
-
+		if (new_world.isEnd())
+		{
+			cout << "\nYour journey ends here.\n";
+			break;
+		}
 	}
+	system("pause");
 	
 
 	return 0;
