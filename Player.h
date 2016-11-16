@@ -17,10 +17,10 @@ public:
 	~Player();
 
 	void Go(const vector<string>& args);
-	void Look(const vector<string>& args);
+	void Look(const vector<string>& args)const;
 	bool Drop(const vector<string>& args);
 	bool Use(const vector<string>& args);
-	void Talk(const vector<string>& args);
+	void Talk(const vector<string>& args)const;
 	void Inventory();
 	void Pick(const vector<string>& args);
 };

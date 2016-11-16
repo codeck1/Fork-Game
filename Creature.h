@@ -17,7 +17,7 @@ public:
 	Creature(const char* name, const char* description, Room* room);
 	~Creature();
 
-	virtual void Look(const vector<string>& args);
+	virtual void Look(const vector<string>& args)const;
 
 public:
 	bool isAlive;

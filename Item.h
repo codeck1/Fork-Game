@@ -20,7 +20,7 @@ public:
 	Item(const char* name, const char* description, Entity* parent, itemType item_type);
 	~Item();
 
-	void Look();
+	void Look()const;
 public:
 	itemType item_type;
 };

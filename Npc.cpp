@@ -8,7 +8,7 @@ Npc::Npc(const char * name, const char * description, Room * room, Item * itemPo
 	dialogNpc = dialog;
 }
 
-void Npc::Look()
+void Npc::Look()const
 {
 	cout << name;
 	cout << description << "\n";

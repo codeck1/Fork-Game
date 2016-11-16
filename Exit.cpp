@@ -16,7 +16,7 @@ Exit::~Exit()
 
 }
 
-void Exit::Look()
+void Exit::Look()const
 {
 	cout << description << "\n";
 	cout << name << " to " << destination->name << "\n";

@@ -10,7 +10,7 @@ Item::~Item()
 {
 }
 
-void Item::Look()
+void Item::Look()const
 {
 	cout << name << "\n";
 	cout << description << "\n";

@@ -11,7 +11,7 @@ Room::~Room()
 {
 }
 
-void Room::Look()
+void Room::Look()const
 {
 	cout << "\n" << name <<  "\n";
 	cout << description << "\n";

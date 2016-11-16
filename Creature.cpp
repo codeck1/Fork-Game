@@ -9,7 +9,7 @@ Creature::~Creature()
 {
 }
 
-void Creature::Look(const vector<string>& args)
+void Creature::Look(const vector<string>& args)const
 {
 	if (isAlive)
 	{

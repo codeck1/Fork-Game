@@ -9,7 +9,7 @@ class Npc : public Creature
 {
 public:
 	Npc(const char* name, const char* description, Room* room, Item* itemPosesion, const char* itemWanted, const char* dialog);
-	void Look();
+	void Look()const;
 	Item* change(Item* toChange);
 	
 public:

@@ -15,7 +15,7 @@ class Exit : public Entity
 public:
 	Exit(const char* name, const char* description, Room* currents, Room* destinations, bool isLocked, Item* itemUnlock);
 	~Exit();
-	void Look();
+	void Look()const;
 	bool Unlock(Item* item);
 
 	void ChangeDest();

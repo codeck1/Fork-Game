@@ -47,7 +47,7 @@ void Player::Go(const vector<string>& args)
 	
 }
 
-void Player::Look(const vector<string>& args)
+void Player::Look(const vector<string>& args)const
 {
 
 	if (args.size() > 1)
@@ -190,7 +190,7 @@ bool Player::Use(const vector<string>& args)
 	return false;
 }
 
-void Player::Talk(const vector<string>& args)
+void Player::Talk(const vector<string>& args)const
 {
 	if (args.size() > 1)
 	{
